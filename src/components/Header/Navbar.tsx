@@ -9,7 +9,7 @@ export default function Navbar({ open }: NavbarProps) {
     <nav
       className={`absolute top-0 ${
         open ? "left-0" : "-left-100"
-      } bottom-0 w-1/2 px-5 py-4 bg-white transition-all duration-500 shadow-lg`}
+      } bottom-0 w-[70%] px-5 py-4 bg-white transition-all duration-500 shadow-lg`}
     >
       <div className="sm:hidden py-7">
         <AuthButton />
