@@ -1,8 +1,16 @@
 import AuthButton from "./AuthButton";
 
-export default function Navbar() {
+interface NavbarProps {
+  open: boolean;
+}
+
+export default function Navbar({ open }: NavbarProps) {
   return (
-    <nav className="absolute top-0 left-0 bottom-0 w-1/2 border px-5 py-4 bg-white">
+    <nav
+      className={`absolute top-0 ${
+        open ? "left-0" : "-left-100"
+      } bottom-0 w-1/2 border px-5 py-4 bg-white transition-all duration-500`}
+    >
       <div className="sm:hidden py-7">
         <AuthButton />
       </div>

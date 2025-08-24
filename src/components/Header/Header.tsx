@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const close = () => setIsOpen(false);
+  const close = () => setIsOpen((prev) => !prev);
 
   return (
     <header className="px-6 py-4 flex justify-between items-center sm:p-4">
