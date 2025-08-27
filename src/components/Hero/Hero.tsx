@@ -1,9 +1,11 @@
+import SearchBar from "../../SearchBar";
 import HeroDescription from "./HeroDescription";
 
 export default function Hero() {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <HeroDescription />
+      <SearchBar />
       {/* <CustomSwiper /> */}
     </div>
   );
