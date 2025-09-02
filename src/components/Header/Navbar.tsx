@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import AuthButton from "./AuthButton";
 
 interface NavbarProps {
@@ -16,18 +17,9 @@ export default function Navbar({ open }: NavbarProps) {
       </div>
       <ul className="mt-5 flex flex-col gap-4 font-semibold sm:flex-row sm:gap-3 sm:mt-0">
         <li className="">
-          <a href="#" className="">
+          <Link to="/" className="">
             Home
-          </a>
-        </li>
-        <li>
-          <a href="#">Blog</a>
-        </li>
-        <li>
-          <a href="#">About Me</a>
-        </li>
-        <li>
-          <a href="#">Contant Us</a>
+          </Link>
         </li>
       </ul>
     </nav>
