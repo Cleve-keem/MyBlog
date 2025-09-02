@@ -1,6 +1,13 @@
 import { Link } from "react-router";
 import AuthButton from "./AuthButton";
 
+const navItems = [
+  { to: "/", name: "Home" },
+  { to: "/about", name: "About" },
+  { to: "/blogs", name: "Blogs" },
+  { to: "/contact-us", name: "Contact Us" },
+];
+
 interface NavbarProps {
   open: boolean;
 }
@@ -16,11 +23,13 @@ export default function Navbar({ open }: NavbarProps) {
         <AuthButton />
       </div>
       <ul className="mt-5 flex flex-col gap-4 font-semibold sm:flex-row sm:gap-3 sm:mt-0">
-        <li className="">
-          <Link to="/" className="">
-            Home
-          </Link>
-        </li>
+        {navItems.map((item) => (
+          <li className="">
+            <Link to={item.to} className="">
+              {item.name}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );
