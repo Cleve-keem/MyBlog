@@ -9,7 +9,7 @@ export default function Signin() {
       <div className="mb-10 size-9 flex items-center justify-center rounded-md bg-blue-600 text-white">
         <FaUserAlt />
       </div>
-      <div className="">
+      <div className="w-full">
         <h1 className="font-semibold text-2xl text-center mb-1">
           Create Account
         </h1>
@@ -25,7 +25,7 @@ export default function Signin() {
           <FormField label="Email" type="email" name="email" />
           <FormField label="Password" type="password" name="password" />
 
-          <Button className="w-full text-white font-semibold bg-blue-700 my-4 h-[40px]">
+          <Button className="w-full text-white font-semibold bg-blue-600 my-4 h-[40px]">
             SIGN UP
           </Button>
         </form>
