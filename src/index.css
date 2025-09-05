@@ -1,3 +1,308 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 @import "tailwindcss";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:root,
+body[data-scheme="light"] {
+  --cs-header-background: var(--cs-light-header-background, #fff);
+  --cs-header-submenu-background: var(
+    --cs-light-header-submenu-background,
+    #fff
+  );
+  --cs-footer-background: var(--cs-light-footer-background, #fff);
+  --cs-offcanvas-background: var(--cs-light-offcanvas-background, #fff);
+}
+:root,
+[data-scheme="light"] {
+  --cs-light-primary-color-rgb: 10, 37, 64;
+  --cs-light-accent-color-rgb: 99, 91, 255;
+  --cs-light-overlay-background-rgb: 1, 1, 1;
+}
+:root,
+[data-scheme="light"] {
+  --cs-palette-color-blue: #59bacc;
+  --cs-palette-color-green: #58ad69;
+  --cs-palette-color-orange: #ffbc49;
+  --cs-palette-color-red: #e32c26;
+  --cs-palette-color-black: #000;
+  --cs-palette-color-white: #fff;
+  --cs-palette-color-primary: #161616;
+  --cs-palette-color-secondary: #585858;
+  --cs-palette-color-layout: #f6f6f6;
+  --cs-palette-color-border: #d9d9d9;
+  --cs-palette-color-divider: #161616;
+  --cs-palette-color-gray-50: #e9e9e9;
+  --cs-palette-color-gray-100: #e9e9e9;
+  --cs-palette-color-gray-200: #d2d2d2;
+}
+[data-scheme] {
+  color: var(--cs-color-primary);
+}
+:root,
+[data-scheme="light"] {
+  --cs-site-background: var(--cs-light-site-background, #f1f5f9);
+  --cs-layout-background: var(--cs-light-layout-background, #fff);
+  --cs-color-primary: var(--cs-light-primary-color, #0a2540);
+  --cs-color-primary-contrast: #fff;
+  --cs-color-secondary: var(--cs-light-secondary-color, #435366);
+  --cs-color-secondary-contrast: #fff;
+  --cs-color-accent: var(--cs-light-accent-color, #635bff);
+  --cs-color-accent-secondary: var(--cs-light-accent-secondary-color, #13b16f);
+  --cs-color-border: var(--cs-light-border-color, #c8d7f5);
+  --cs-color-input: var(--cs-light-input-background);
+  --cs-color-input-contrast: var(--cs-light-input-color);
+  --cs-color-button: var(--cs-light-button-background, #0a2540);
+  --cs-color-button-contrast: var(--cs-light-button-color, #fff);
+  --cs-color-button-hover: var(--cs-light-button-hover-background, #635bff);
+  --cs-color-button-hover-contrast: var(--cs-light-button-hover-color, #fff);
+  --cs-color-tag: var(--cs-light-tag-color, #f1f1ff);
+  --cs-color-overlay-background: var(
+    --cs-light-overlay-background-rgb,
+    #010101
+  );
+  --cs-color-contrast-50: #e9e9e9;
+  --cs-color-contrast-100: #e9e9e9;
+  --cs-color-contrast-200: #d2d2d2;
+  --cs-color-contrast-300: #bbb;
+  --cs-color-contrast-400: #a4a4a4;
+  --cs-color-contrast-500: gray;
+  --cs-color-contrast-600: #6c6c6c;
+  --cs-color-contrast-700: #494949;
+  --cs-color-contrast-800: #343434;
+  --cs-color-contrast-900: #232323;
+}
+
+:root,
+[data-scheme="dark"] {
+  --cs-dark-primary-color-rgb: 255, 255, 255;
+  --cs-dark-accent-color-rgb: 255, 255, 255;
+  --cs-dark-overlay-background-rgb: 1, 1, 1;
+}
+
+:root,
+[data-scheme="light"] {
+  --cs-light-primary-color-rgb: 10, 37, 64;
+  --cs-light-accent-color-rgb: 99, 91, 255;
+  --cs-light-overlay-background-rgb: 1, 1, 1;
+}
+
+:root {
+  --cs-light-primary-color: #0a2540;
+  --cs-dark-primary-color: #fff;
+  --cs-light-secondary-color: #435366;
+  --cs-dark-secondary-color: #cdcdcd;
+  --cs-light-accent-color: #635bff;
+  --cs-dark-accent-color: #fff;
+  --cs-light-accent-secondary-color: #13b16f;
+  --cs-dark-accent-secondary-color: #13b16f;
+  --cs-light-site-background: #f1f5f9;
+  --cs-dark-site-background: #161616;
+  --cs-light-layout-background: #fff;
+  --cs-dark-layout-background: #232323;
+  --cs-light-offcanvas-background: #fff;
+  --cs-dark-offcanvas-background: #232323;
+  --cs-light-header-background: #fff;
+  --cs-dark-header-background: #232323;
+  --cs-light-header-submenu-background: #fff;
+  --cs-dark-header-submenu-background: #232323;
+  --cs-light-footer-background: #fff;
+  --cs-dark-footer-background: #161616;
+  --cs-light-tag-color: #f1f1ff;
+  --cs-dark-tag-color: #494949;
+  --cs-light-border-color: #c8d7f5;
+  --cs-dark-border-color: #343434;
+  --cs-light-overlay-background: #010101;
+  --cs-dark-overlay-background: #010101;
+  --cs-light-input-color: #000;
+  --cs-dark-input-color: #fff;
+  --cs-light-button-background: #0a2540;
+  --cs-dark-button-background: #3e3e3e;
+  --cs-light-button-color: #fff;
+  --cs-dark-button-color: #fff;
+  --cs-light-button-hover-background: #635bff;
+  --cs-dark-button-hover-background: #343434;
+  --cs-light-button-hover-color: #fff;
+  --cs-dark-button-hover-color: #fff;
+  --cs-heading-1-font-size: 2.375rem;
+  --cs-heading-2-font-size: 2rem;
+  --cs-heading-3-font-size: 1.625rem;
+  --cs-heading-4-font-size: 1.25rem;
+  --cs-heading-5-font-size: 1.125rem;
+  --cs-heading-6-font-size: 1rem;
+  --cs-header-initial-height: 64px;
+  --cs-header-height: 64px;
+}
+
+:root {
+  --cs-font-base-family: "Roboto", sans-serif;
+  --cs-font-base-weight: 400;
+  --cs-font-base-size: 1rem;
+  --cs-font-base-line-height: 1.2;
+  --cs-font-base-letter-spacing: -0.02em;
+  --cs-font-base-style: normal;
+  --cs-font-primary-family: Manrope;
+  --cs-font-primary-weight: 700;
+  --cs-font-primary-size: 0.9375rem;
+  --cs-font-primary-line-height: 1.2;
+  --cs-font-primary-letter-spacing: -0.02em;
+  --cs-font-primary-text-transform: none;
+  --cs-font-primary-style: normal;
+  --cs-font-secondary-family: Inter;
+  --cs-font-secondary-weight: 400;
+  --cs-font-secondary-size: 0.875rem;
+  --cs-font-secondary-line-height: 1.2;
+  --cs-font-secondary-letter-spacing: -0.022em;
+  --cs-font-secondary-text-transform: none;
+  --cs-font-secondary-style: normal;
+  --cs-font-section-headings-family: Manrope;
+  --cs-font-section-headings-weight: 800;
+  --cs-font-section-headings-size: 0.875rem;
+  --cs-font-section-headings-line-height: 1.4;
+  --cs-font-section-headings-letter-spacing: -0.02em;
+  --cs-font-section-headings-text-transform: none;
+  --cs-font-section-headings-style: normal;
+  --cs-font-post-title-family: Manrope;
+  --cs-font-post-title-weight: 800;
+  --cs-font-post-title-size: 2.375rem;
+  --cs-font-post-title-line-height: 1.4;
+  --cs-font-post-title-letter-spacing: -0.03em;
+  --cs-font-post-title-text-transform: none;
+  --cs-font-post-subtitle-family: Inter;
+  --cs-font-post-subtitle-weight: 400;
+  --cs-font-post-subtitle-size: 1.375rem;
+  --cs-font-post-subtitle-line-height: 1.6;
+  --cs-font-post-subtitle-letter-spacing: -0.02em;
+  --cs-font-category-family: Manrope;
+  --cs-font-category-weight: 800;
+  --cs-font-category-size: 0.75rem;
+  --cs-font-category-line-height: 1.2;
+  --cs-font-category-letter-spacing: -0.02em;
+  --cs-font-category-text-transform: none;
+  --cs-font-category-style: normal;
+  --cs-font-post-meta-family: Inter;
+  --cs-font-post-meta-weight: 600;
+  --cs-font-post-meta-size: 0.8125rem;
+  --cs-font-post-meta-line-height: 1.4;
+  --cs-font-post-meta-letter-spacing: -0.04em;
+  --cs-font-post-meta-text-transform: none;
+  --cs-font-post-meta-style: normal;
+  --cs-font-post-content-family: Inter;
+  --cs-font-post-content-weight: 400;
+  --cs-font-post-content-size: 1.25rem;
+  --cs-font-post-content-line-height: 1.6;
+  --cs-font-post-content-letter-spacing: -0.01em;
+  --cs-font-input-family: Inter;
+  --cs-font-input-weight: 400;
+  --cs-font-input-size: 0.875rem;
+  --cs-font-input-line-height: 1.4;
+  --cs-font-input-letter-spacing: -0.02em;
+  --cs-font-input-text-transform: none;
+  --cs-font-input-style: normal;
+  --cs-font-entry-title-family: Manrope;
+  --cs-font-entry-title-weight: 800;
+  --cs-font-entry-title-line-height: 1.4;
+  --cs-font-entry-title-letter-spacing: -0.03em;
+  --cs-font-entry-title-text-transform: none;
+  --cs-font-entry-title-style: normal;
+  --cs-font-entry-excerpt-family: Inter;
+  --cs-font-entry-excerpt-weight: 400;
+  --cs-font-entry-excerpt-size: 1rem;
+  --cs-font-entry-excerpt-line-height: 1.4;
+  --cs-font-entry-excerpt-letter-spacing: -0.02em;
+  --cs-font-entry-excerpt-style: normal;
+  --cs-font-main-logo-family: Manrope;
+  --cs-font-main-logo-size: 1.375rem;
+  --cs-font-main-logo-weight: 700;
+  --cs-font-main-logo-letter-spacing: -0.02em;
+  --cs-font-main-logo-text-transform: none;
+  --cs-font-main-logo-style: normal;
+  --cs-font-mobile-logo-family: Manrope;
+  --cs-font-mobile-logo-size: 1.375rem;
+  --cs-font-mobile-logo-weight: 700;
+  --cs-font-mobile-logo-letter-spacing: -0.02em;
+  --cs-font-mobile-logo-text-transform: none;
+  --cs-font-mobile-logo-style: normal;
+  --cs-font-footer-logo-family: Manrope;
+  --cs-font-footer-logo-size: 1.375rem;
+  --cs-font-footer-logo-weight: 700;
+  --cs-font-footer-logo-letter-spacing: -0.02em;
+  --cs-font-footer-logo-text-transform: none;
+  --cs-font-footer-logo-style: normal;
+  --cs-font-headings-family: Manrope;
+  --cs-font-headings-weight: 800;
+  --cs-font-headings-line-height: 1.4;
+  --cs-font-headings-letter-spacing: -0.03em;
+  --cs-font-headings-text-transform: none;
+  --cs-font-headings-style: normal;
+  --cs-font-menu-family: Manrope;
+  --cs-font-menu-weight: 800;
+  --cs-font-menu-size: 0.9375rem;
+  --cs-font-menu-line-height: 1.2;
+  --cs-font-menu-letter-spacing: -0.02em;
+  --cs-font-menu-text-transform: none;
+  --cs-font-menu-style: normal;
+  --cs-font-submenu-family: Manrope;
+  --cs-font-submenu-weight: 800;
+  --cs-font-submenu-size: 0.9375rem;
+  --cs-font-submenu-line-height: 1.2;
+  --cs-font-submenu-letter-spacing: -0.02em;
+  --cs-font-submenu-text-transform: none;
+  --cs-font-submenu-style: normal;
+  --cs-font-submenu-small-menu-family: Inter;
+  --cs-font-submenu-small-menu-weight: 400;
+  --cs-font-submenu-small-menu-size: 1rem;
+  --cs-font-submenu-small-menu-line-height: 1.2;
+  --cs-font-submenu-small-menu-letter-spacing: -0.02em;
+  --cs-font-submenu-small-menu-text-transform: none;
+  --cs-font-submenu-small-menu-style: normal;
+  --cs-font-footer-menu-family: Manrope;
+  --cs-font-footer-menu-weight: 800;
+  --cs-font-footer-menu-size: 0.9375rem;
+  --cs-font-footer-menu-line-height: 1.2;
+  --cs-font-footer-menu-letter-spacing: -0.02em;
+  --cs-font-footer-menu-text-transform: none;
+  --cs-font-footer-menu-style: normal;
+  --cs-font-footer-submenu-family: Inter;
+  --cs-font-footer-submenu-weight: 400;
+  --cs-font-footer-submenu-size: 0.9375rem;
+  --cs-font-footer-submenu-line-height: 1.2;
+  --cs-font-footer-submenu-letter-spacing: -0.02em;
+  --cs-font-footer-submenu-text-transform: none;
+  --cs-font-footer-submenu-style: normal;
+}
+
+body {
+  background: var(--cs-site-background);
+  overflow-x: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  --cs-wpadminbar-height: 0px;
+}
+
+body {
+  font-family: var(--cs-font-base-family), sans-serif;
+  font-size: var(--cs-font-base-size);
+  font-weight: var(--cs-font-base-weight);
+  font-style: var(--cs-font-base-style);
+  line-height: var(--cs-font-base-line-height);
+  letter-spacing: var(--cs-font-base-letter-spacing);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  background-color: #fff;
+  color: #000;
+}

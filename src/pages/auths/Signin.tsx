@@ -19,8 +19,8 @@ export default function Signin() {
         </p>
         <form>
           <div className="flex flex-col sm:flex-row sm:gap-5">
-            <FormField label="Firstname" type="text" name="firstname" />
-            <FormField label="Lastname" type="text" name="lastname" />
+            <FormField label="First Name" type="text" name="firstname" />
+            <FormField label="Last Name" type="text" name="lastname" />
           </div>
           <FormField label="Email" type="email" name="email" />
           <FormField label="Password" type="password" name="password" />

@@ -5,7 +5,7 @@ export default function AppLayout() {
   return (
     <>
       <Header />
-      <main>
+      <main className="mt-19 lg:w-[90%] mx-auto">
         <Outlet />
       </main>
     </>

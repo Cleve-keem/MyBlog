@@ -2,9 +2,9 @@ import { Link } from "react-router";
 import AuthButton from "./AuthButton";
 
 const navItems = [
-  { to: "/", name: "Home" },
-  { to: "/about", name: "About" },
-  { to: "/blogs", name: "Blogs" },
+  { to: "/", name: "Features" },
+  { to: "/about", name: "Categories" },
+  { to: "/blogs", name: "Lifestyle" },
   { to: "/contact-us", name: "Contact Us" },
 ];
 
