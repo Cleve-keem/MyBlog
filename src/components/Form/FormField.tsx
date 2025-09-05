@@ -22,7 +22,7 @@ export default function FormField({
   if (type === "password") {
     return (
       <div className="mb-3 w-full">
-        <label htmlFor={name} className="block mb-1 font-semibold">
+        <label htmlFor={name} className="block mb-1 font-normal">
           {label}
         </label>
         <div className="relative">
@@ -46,7 +46,7 @@ export default function FormField({
 
   return (
     <div className="mb-3 w-full">
-      <label htmlFor={name} className="block mb-1 font-semibold">
+      <label htmlFor={name} className="block mb-1 font-normal">
         {label}
       </label>
       <input

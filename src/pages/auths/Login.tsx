@@ -6,7 +6,7 @@ import { FaLock } from "react-icons/fa";
 export default function Login() {
   return (
     <>
-      <div className="mb-10 size-9 flex items-center justify-center rounded-md bg-blue-600 text-white">
+      <div className="mb-10 size-9 flex items-center justify-center rounded-md bg-gray-900 text-white">
         <FaLock />
       </div>
       <div className="w-full">
@@ -20,14 +20,14 @@ export default function Login() {
           <FormField label="Email" type="email" name="email" />
           <FormField label="Password" type="password" name="password" />
 
-          <Button className="w-full text-white font-semibold bg-blue-600 my-4 h-[40px]">
+          <Button className="w-full h-[40px] text-white text-sm font-normal bg-gray-900 my-4">
             SIGN IN
           </Button>
         </form>
         {/* Oauth */}
         <div></div>
 
-        <p className="text-center">
+        <p className="text-center text-sm">
           Don't have an account? <Link to="/sign-up">Sign up</Link>
         </p>
       </div>

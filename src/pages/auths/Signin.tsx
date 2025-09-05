@@ -6,7 +6,7 @@ import { FaUserAlt } from "react-icons/fa";
 export default function Signin() {
   return (
     <>
-      <div className="mb-10 size-9 flex items-center justify-center rounded-md bg-blue-600 text-white">
+      <div className="mb-10 size-9 flex items-center justify-center rounded-md bg-gray-900 text-white">
         <FaUserAlt />
       </div>
       <div className="w-full">
@@ -25,14 +25,14 @@ export default function Signin() {
           <FormField label="Email" type="email" name="email" />
           <FormField label="Password" type="password" name="password" />
 
-          <Button className="w-full text-white font-semibold bg-blue-600 my-4 h-[40px]">
+          <Button className="w-full text-white font-normal text-sm bg-gray-900 my-4 h-[40px]">
             SIGN UP
           </Button>
         </form>
         {/* Oauth */}
         <div></div>
 
-        <p className="text-center">
+        <p className="text-center text-sm">
           Already have an account? <Link to="/login">Sign in</Link>
         </p>
       </div>
