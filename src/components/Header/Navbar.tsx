@@ -1,6 +1,13 @@
 import { Link } from "react-router";
-import AuthButton from "./AuthButton";
-import { IoIosArrowDown } from "react-icons/io";
+
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 const navItems = [
   {
@@ -18,35 +25,38 @@ const navItems = [
     name: "Lifestyle",
     dropdown: ["Trends", "Lifestyle", "Business", "Technologies"],
   },
-  // { to: "/contact-us", name: "Contact Us" },
 ];
 
-interface NavbarProps {
-  open: boolean;
-}
-
-export default function Navbar({ open }: NavbarProps) {
+export default function Navbar() {
   return (
-    <nav
-      className={`absolute top-0 ${
-        open ? "left-0" : "-left-100"
-      } bottom-0 w-[70%] px-5 py-4 transition-all duration-500 shadow-lg sm:relative sm:w-fit sm:p-0 sm:bg-transparent sm:shadow-none sm:-left-0`}
-    >
-      <div className="sm:hidden py-7">
-        <AuthButton />
-      </div>
-      <ul className="mt-5 flex flex-col gap-4 font-semibold sm:flex-row sm:gap-5 sm:mt-0">
+    <NavigationMenu>
+      <NavigationMenuList>
         {navItems.map((item) => (
-          <li>
-            <Link to={item.to}>
-              {item.name}
-              <span className="inline-block text-[13px]">
-                {item.dropdown && <IoIosArrowDown />}
-              </span>
-            </Link>
-          </li>
+          <NavigationMenuItem key={item.name} className="relative">
+            {/* Trigger */}
+            <NavigationMenuTrigger>{item.name}</NavigationMenuTrigger>
+            {item.dropdown && (
+              // dropdown
+              <NavigationMenuContent className="absolute left-0 top-full mt-2 w-56 rounded-md border bg-white shadow-md">
+                <ul className="grid gap-2 p-2">
+                  {item.dropdown.map((sub, index) => (
+                    <li key={index}>
+                      <NavigationMenuLink asChild>
+                        <Link
+                          to="#"
+                          className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent"
+                        >
+                          {sub}
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            )}
+          </NavigationMenuItem>
         ))}
-      </ul>
-    </nav>
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 }
