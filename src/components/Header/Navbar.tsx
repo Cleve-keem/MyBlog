@@ -1,5 +1,4 @@
-import { Link } from "react-router";
-
+import { Link } from "react-router-dom"; // ✅ not react-router
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -7,21 +6,19 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 
 const navItems = [
   {
-    to: "#",
     name: "Features",
     dropdown: ["Trends", "Lifestyle", "Business", "Technologies"],
   },
   {
-    to: "/about",
     name: "Categories",
     dropdown: ["Trends", "Lifestyle", "Business", "Technologies"],
   },
   {
-    to: "/blogs",
     name: "Lifestyle",
     dropdown: ["Trends", "Lifestyle", "Business", "Technologies"],
   },
@@ -32,31 +29,33 @@ export default function Navbar() {
     <NavigationMenu>
       <NavigationMenuList>
         {navItems.map((item) => (
-          <NavigationMenuItem key={item.name} className="relative">
-            {/* Trigger */}
+          <NavigationMenuItem key={item.name}>
+            {/* trigger */}
             <NavigationMenuTrigger>{item.name}</NavigationMenuTrigger>
-            {item.dropdown && (
-              // dropdown
-              <NavigationMenuContent className="absolute left-0 top-full mt-2 w-56 rounded-md border bg-white shadow-md">
-                <ul className="grid gap-2 p-2">
-                  {item.dropdown.map((sub, index) => (
-                    <li key={index}>
-                      <NavigationMenuLink asChild>
-                        <Link
-                          to="#"
-                          className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent"
-                        >
-                          {sub}
-                        </Link>
-                      </NavigationMenuLink>
-                    </li>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            )}
+
+            {/* dropdown content */}
+            <NavigationMenuContent>
+              <ul className="grid gap-2 p-2">
+                {item.dropdown.map((sub, index) => (
+                  <li key={index}>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        to="#"
+                        className="block rounded-md px-3 py-2 text-sm hover:bg-accent"
+                      >
+                        {sub}
+                      </Link>
+                    </NavigationMenuLink>
+                  </li>
+                ))}
+              </ul>
+            </NavigationMenuContent>
           </NavigationMenuItem>
         ))}
       </NavigationMenuList>
+
+      {/* viewport is CRUCIAL for correct positioning + animation */}
+      <NavigationMenuViewport />
     </NavigationMenu>
   );
 }
