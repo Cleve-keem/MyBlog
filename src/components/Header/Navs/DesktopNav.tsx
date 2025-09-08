@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { TiArrowDown } from "react-icons/ti";
+import { IoArrowDownOutline } from "react-icons/io5";
 
 const navItems = [
   {
@@ -58,7 +59,7 @@ export default function DesktopNav({
                 {activeMenu !== index ? (
                   <MdKeyboardArrowDown />
                 ) : (
-                  <TiArrowDown />
+                  <IoArrowDownOutline />
                 )}
               </span>
             )}
