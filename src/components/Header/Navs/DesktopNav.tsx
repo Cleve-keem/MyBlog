@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom"; // ✅ not react-router
+import { Link } from "react-router-dom";
 import { useState } from "react";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { TiArrowDown } from "react-icons/ti";
 
 const navItems = [
   {
@@ -41,18 +43,25 @@ export default function DesktopNav() {
           key={index}
           className="relative"
           onMouseEnter={() => setActiveMenu(index)}
+          onMouseLeave={() => setActiveMenu(null)}
         >
           {/* Button */}
-          <button className="px-2 py-1 hover:text-pink-500 transition">
+          <button className="flex gap-1 px-2 py-1 hover:text-pink-500 transition">
             {item.label}
+            {item.menu && (
+              <span>
+                {activeMenu !== index ? (
+                  <MdKeyboardArrowDown />
+                ) : (
+                  <TiArrowDown />
+                )}
+              </span>
+            )}
           </button>
 
           {/* Dropdown */}
           {activeMenu === index && (
-            <div
-              className="absolute top-10 left-1/2 -translate-x-1/2 mt-3 w-52 bg-white text-black rounded-lg shadow-lg z-50"
-              onMouseLeave={() => setActiveMenu(null)}
-            >
+            <div className="absolute top-10 left-1/2 -translate-x-1/2 mt-3 w-52 bg-white text-black rounded-lg shadow-lg z-50">
               {/* Pointer */}
               <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white"></div>
 

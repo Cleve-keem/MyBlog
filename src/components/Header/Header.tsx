@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import AuthButton from "./AuthButton";
 import Hamburger from "./Hamburger";
 import Logo from "./Logo";
@@ -11,7 +12,7 @@ export default function Header() {
   const close = () => setIsOpen((prev) => !prev);
 
   return (
-    <header className="fixed left-0 right-0 top-1.5 px-6 py-4 flex justify-between items-center sm:p-4 lg:w-[90%] mx-auto rounded border bg-white/60 backdrop-blur-md shadow-md">
+    <motion.header className="fixed left-0 right-0 top-1.5 px-6 py-4 flex justify-between items-center sm:p-4 lg:w-[90%] mx-auto rounded hover:bg-white/60 hover:backdrop-blur-md hover:shadow-md hover:scale-[1.01]">
       <div className="flex gap-5 items-center">
         <Hamburger closeNav={close} />
         <Logo />
@@ -23,7 +24,7 @@ export default function Header() {
           <AuthButton />
         </div>
       </div>
-    </header>
+    </motion.header>
 
     // <header className="fixed left-0 right-0 top-1.5 px-6 py-4 flex justify-between items-center mb-4 sm:p-4 lg:w-[90%] mx-auto rounded border hover:bg-white">
     //   <div className="flex gap-5 items-center">
