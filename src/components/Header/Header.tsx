@@ -5,6 +5,7 @@ import Hamburger from "./Hamburger";
 import Logo from "./Logo";
 import Navbar from "./Navbar";
 import { CiSearch } from "react-icons/ci";
+import MobileNav from "./Navs/MoblieNav";
 
 export default function Header() {
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
@@ -25,9 +26,12 @@ export default function Header() {
       <div className="flex gap-5 w-full justify-between items-center">
         <Hamburger closeNav={close} />
         <Logo />
-        <div className="hidden md:block">
-          <Navbar activeMenu={activeMenu} closeActiveMenu={closeActiveMenu} />
-        </div>
+        <Navbar
+          activeMenu={activeMenu}
+          closeActiveMenu={closeActiveMenu}
+          closeNav={close}
+          isNavOpen={isOpen}
+        />
         <CiSearch className="text-2xl" />
       </div>
       <div className="hidden md:flex md:items-center gap-4">

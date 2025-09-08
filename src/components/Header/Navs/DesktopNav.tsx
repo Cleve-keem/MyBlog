@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { TiArrowDown } from "react-icons/ti";
-import type { NavbarProps } from "../Navbar";
 
 const navItems = [
   {
@@ -33,10 +32,15 @@ const navItems = [
   },
 ];
 
+interface DesktopProps {
+  activeMenu: number | null;
+  closeActiveMenu: (menu: number | null) => void;
+}
+
 export default function DesktopNav({
   activeMenu,
   closeActiveMenu,
-}: NavbarProps) {
+}: DesktopProps) {
   return (
     <ul className="flex relative h-full">
       {navItems.map((item, index) => (
