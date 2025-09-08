@@ -39,9 +39,14 @@ export default function MobileNav({
   activeMenu,
   closeActiveMenu,
   closeNav,
+  isNavOpen,
 }: NavbarProps) {
   return (
-    <aside className="fixed top-0 bg-white left-0 right-0 bottom-0">
+    <aside
+      className={`fixed top-0 bg-white left-0 right-0 bottom-0 ${
+        !isNavOpen ? "-translate-x-full" : "translate-x-0"
+      }`}
+    >
       <div className="flex p-4 justify-between">
         <Hamburger closeNav={closeNav} type="close" />
         <Logo />

@@ -15,8 +15,10 @@ export default function Hamburger({ closeNav, type }: HamburgerProps) {
         }`}
       ></span>
       <span
-        className={`block bg-black w-6 h-0.5 rounded ${
-          type === "close" ? "-rotate-50 origin-center -translate-y-0.5" : ""
+        className={`block bg-black h-0.5 rounded ${
+          type === "close"
+            ? "w-6 -rotate-50 origin-center -translate-y-0.5"
+            : "w-4"
         }`}
       ></span>
     </button>

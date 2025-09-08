@@ -24,7 +24,7 @@ export default function Header() {
       }`}
     >
       <div className="flex gap-5 w-full justify-between items-center">
-        <Hamburger closeNav={close} />
+        <Hamburger closeNav={close} type="open" />
         <Logo />
         <Navbar
           activeMenu={activeMenu}
