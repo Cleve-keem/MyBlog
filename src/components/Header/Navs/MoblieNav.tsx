@@ -43,7 +43,7 @@ export default function MobileNav({
 }: NavbarProps) {
   return (
     <aside
-      className={`fixed top-0 bg-white left-0 right-0 bottom-0 ${
+      className={`fixed top-0 bg-white left-0 right-0 bottom-0 transition-all duration-500 ${
         !isNavOpen ? "-translate-x-full" : "translate-x-0"
       }`}
     >

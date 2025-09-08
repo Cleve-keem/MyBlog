@@ -29,6 +29,7 @@ export default function Header() {
           activeMenu={activeMenu}
           closeActiveMenu={closeActiveMenu}
           closeNav={close}
+          isNavOpen={isOpen}
         />
         <CiSearch className="text-2xl" />
       </div>
