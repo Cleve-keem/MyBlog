@@ -22,7 +22,7 @@ export default function Navbar({
       <MobileNav
         activeMenu={activeMenu}
         closeActiveMenu={closeActiveMenu}
-        // isNavOpen={isNavOpen}
+        isNavOpen={isNavOpen}
         closeNav={closeNav}
       />
     </>

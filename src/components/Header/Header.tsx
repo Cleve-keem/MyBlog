@@ -5,7 +5,6 @@ import Hamburger from "./Hamburger";
 import Logo from "./Logo";
 import Navbar from "./Navbar";
 import { CiSearch } from "react-icons/ci";
-import MobileNav from "./Navs/MoblieNav";
 
 export default function Header() {
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
@@ -30,7 +29,6 @@ export default function Header() {
           activeMenu={activeMenu}
           closeActiveMenu={closeActiveMenu}
           closeNav={close}
-          isNavOpen={isOpen}
         />
         <CiSearch className="text-2xl" />
       </div>
