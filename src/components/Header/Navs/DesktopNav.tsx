@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { TiArrowDown } from "react-icons/ti";
+import type { NavbarProps } from "../Navbar";
 
 const navItems = [
   {
@@ -33,20 +33,21 @@ const navItems = [
   },
 ];
 
-export default function DesktopNav() {
-  const [activeMenu, setActiveMenu] = useState<number | null>(null);
-
+export default function DesktopNav({
+  activeMenu,
+  closeActiveMenu,
+}: NavbarProps) {
   return (
-    <ul className="flex gap-6 relative">
+    <ul className="flex relative h-full">
       {navItems.map((item, index) => (
         <li
           key={index}
-          className="relative"
-          onMouseEnter={() => setActiveMenu(index)}
-          onMouseLeave={() => setActiveMenu(null)}
+          className="relative h-full"
+          onMouseEnter={() => closeActiveMenu(index)}
+          onMouseLeave={() => closeActiveMenu(null)}
         >
           {/* Button */}
-          <button className="flex gap-1 px-2 py-1 hover:text-pink-500 transition">
+          <button className="h-full flex items-center px-2 py-1 hover:text-blue-400 transition">
             {item.label}
             {item.menu && (
               <span>
@@ -61,9 +62,9 @@ export default function DesktopNav() {
 
           {/* Dropdown */}
           {activeMenu === index && (
-            <div className="absolute top-10 left-1/2 -translate-x-1/2 mt-3 w-52 bg-white text-black rounded-lg shadow-lg z-50">
+            <div className="absolute top-10 left-1/2 -translate-x-1/2 mt-3 bg-white text-black rounded-lg shadow-lg z-50">
               {/* Pointer */}
-              <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white"></div>
+              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white"></div>
 
               <ul className="flex flex-col p-2">
                 {item.menu.map((menuItem, i) => (
