@@ -4,7 +4,7 @@ import AuthButton from "./AuthButton";
 import Hamburger from "./Hamburger";
 import Logo from "./Logo";
 import Navbar from "./Navbar";
-import { CiSearch } from "react-icons/ci";
+import { IoSearchOutline } from "react-icons/io5";
 
 export default function Header() {
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
@@ -31,10 +31,10 @@ export default function Header() {
           closeNav={close}
           isNavOpen={isOpen}
         />
-        <CiSearch className="text-2xl" />
+        <IoSearchOutline className="text-2xl" />
       </div>
       <div className="hidden md:flex md:items-center gap-4">
-        <CiSearch className="text-2xl" />
+        <IoSearchOutline className="text-2xl" />
         <div className="hidden sm:block">
           <AuthButton />
         </div>

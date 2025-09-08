@@ -47,7 +47,7 @@ export default function MobileNav({
         !isNavOpen ? "-translate-x-full" : "translate-x-0"
       }`}
     >
-      <div className="flex p-4 justify-between">
+      <div className="flex px-5 py-4 justify-between">
         <Hamburger closeNav={closeNav} type="close" />
         <Logo />
         <div />

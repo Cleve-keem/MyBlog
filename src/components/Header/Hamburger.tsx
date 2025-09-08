@@ -6,7 +6,7 @@ interface HamburgerProps {
 export default function Hamburger({ closeNav, type }: HamburgerProps) {
   return (
     <button
-      className="space-y-[5px] transition-all duration-300 hover:text-blue-400"
+      className="space-y-[6px] transition-all duration-300 hover:text-blue-400"
       onClick={closeNav}
     >
       <span
