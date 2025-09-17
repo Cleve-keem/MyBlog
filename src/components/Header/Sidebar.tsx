@@ -5,6 +5,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoArrowDownOutline } from "react-icons/io5";
 import Hamburger from "./Hamburger";
+import Logo from "./Logo";
 
 type SidebarProps = {
   variant: "desktop" | "mobile";
@@ -87,16 +88,13 @@ export default function Sidebar({ variant, isOpen, close }: SidebarProps) {
           animate={{ x: 0 }}
           exit={{ x: "-100%" }}
           transition={{ duration: 0.3 }}
-          className="fixed top-0 left-0 h-screen w-64 bg-white shadow-lg p-6 flex flex-col gap-4 z-50"
+          className="fixed top-0 left-0 right-0 h-screen bg-white shadow-lg p-6 flex flex-col gap-4 z-50"
         >
-          {/* <button
-            onClick={close}
-            className="self-end px-2 py-1 rounded bg-gray-200"
-          >
-            Close ✖
-          </button> */}
-
-          <Hamburger close={close} variant="close" />
+          <div className="flex justify-between mb-2">
+            <Hamburger close={close} variant="close" />
+            <Logo/>
+            <div />
+          </div>
 
           {navItems.map((item, index) => (
             <li key={index} className="border-b pb-2">
