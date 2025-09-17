@@ -4,14 +4,18 @@ import { IoEyeSharp } from "react-icons/io5";
 
 export interface FormFieldProps {
   label: string;
-  type: string;
+  type?: string;
   name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function FormField({
   label,
   type = "text",
   name,
+  value,
+  onChange,
 }: FormFieldProps) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -30,7 +34,10 @@ export default function FormField({
             type={!showPassword ? type : "text"}
             name={name}
             id={name}
+            value={value}
             className="w-full border border-gray-300 outline-none h-[40px] px-2 rounded"
+            onChange={onChange}
+            required
           />
           <span
             role="button"
@@ -53,7 +60,10 @@ export default function FormField({
         type={type}
         name={name}
         id={name}
+        value={value}
         className="w-full border border-gray-300 outline-none h-[40px] px-2 rounded"
+        onChange={onChange}
+        required
       />
     </div>
   );

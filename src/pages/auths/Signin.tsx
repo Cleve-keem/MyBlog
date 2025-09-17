@@ -2,8 +2,26 @@ import { Link } from "react-router";
 import Button from "../../components/Button";
 import FormField from "../../components/Form/FormField";
 import { FaUserAlt } from "react-icons/fa";
+import { useState } from "react";
 
 export default function Signin() {
+  const [formData, setFormData] = useState<Record<string, string>>({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    console.log("submitting", formData);
+  }
+
   return (
     <>
       <div className="mb-10 size-9 flex items-center justify-center rounded-md bg-gray-900 text-white">
@@ -17,13 +35,37 @@ export default function Signin() {
           Let's get you all set, fill your information below or register with
           your social account
         </p>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="flex flex-col sm:flex-row sm:gap-5">
-            <FormField label="First Name" type="text" name="firstname" />
-            <FormField label="Last Name" type="text" name="lastname" />
+            <FormField
+              label="First Name"
+              type="text"
+              name="firstname"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <FormField
+              label="Last Name"
+              type="text"
+              name="lastname"
+              value={formData.name}
+              onChange={handleChange}
+            />
           </div>
-          <FormField label="Email" type="email" name="email" />
-          <FormField label="Password" type="password" name="password" />
+          <FormField
+            label="Email"
+            type="email"
+            name="email"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          <FormField
+            label="Password"
+            type="password"
+            name="password"
+            value={formData.name}
+            onChange={handleChange}
+          />
 
           <Button className="w-full text-white font-normal text-sm bg-gray-900 my-4 h-[40px]">
             SIGN UP

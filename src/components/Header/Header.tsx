@@ -16,9 +16,9 @@ export default function Header() {
     <motion.header className="h-[65px] fixed left-0 right-0 top-0 md:top-1.5 px-6 flex justify-between sm:px-2 lg:w-[90%] mx-auto rounded hover:bg-white/60 hover:backdrop-blur-md hover:shadow-md hover:scale-[1.01] z-40 bg-white">
       {/* Left */}
       <div className="flex items-center gap-5">
-        <Hamburger closeNav={toggleMobile} />
+        <Hamburger close={toggleMobile} variant="open" />
         <Logo />
-        <Sidebar variant="desktop" />
+        <Sidebar variant="desktop" close={toggleMobile} />
       </div>
 
       {/* Right */}
