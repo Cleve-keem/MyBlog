@@ -34,7 +34,7 @@ export default function Sidebar({ variant, isOpen, close }: SidebarProps) {
                 onMouseLeave={() => handleHover(null)}
               >
                 <button className="flex items-center gap-1 font-medium">
-                  {item.label}{" "}
+                  {item.label}
                   {item.menu && (
                     <span>
                       {activeMenu !== index ? (
@@ -88,11 +88,11 @@ export default function Sidebar({ variant, isOpen, close }: SidebarProps) {
           animate={{ x: 0 }}
           exit={{ x: "-100%" }}
           transition={{ duration: 0.3 }}
-          className="fixed top-0 left-0 right-0 h-screen bg-white shadow-lg p-6 flex flex-col gap-4 z-50"
+          className="fixed top-0 left-0 w-full h-screen bg-white shadow-lg p-6 flex flex-col gap-4 z-50 md:w-1/2"
         >
           <div className="flex justify-between mb-2">
             <Hamburger close={close} variant="close" />
-            <Logo/>
+            <Logo />
             <div />
           </div>
 
