@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -12,13 +12,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<AuthLayout />}>
-          <Route index element={<Navigate replace to="login" />} />
+        <Route path="auth" element={<AuthLayout />}>
+          {/* <Route index element={<Navigate replace to="login" />} /> */}
           <Route path="login" element={<Login />} />
           <Route path="sign-up" element={<Signin />} />
         </Route>
 
-        <Route path="platform" element={<AppLayout />}>
+        <Route path="/" element={<AppLayout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="blogs" element={<Blogs />} />
