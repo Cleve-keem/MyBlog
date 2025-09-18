@@ -17,7 +17,7 @@ export default function Login() {
 
   function handleSubmit(e: any) {
     e.preventDefualt();
-    
+
     console.log(e);
   }
 
@@ -57,7 +57,7 @@ export default function Login() {
         <div></div>
 
         <p className="text-center text-sm">
-          Don't have an account? <Link to="/sign-up">Sign up</Link>
+          Don't have an account? <Link to="/auth/sign-up">Sign up</Link>
         </p>
       </div>
     </>

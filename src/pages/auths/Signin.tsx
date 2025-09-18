@@ -1,7 +1,9 @@
 import { Link } from "react-router";
 import Button from "../../components/Button";
 import FormField from "../../components/Form/FormField";
-import { FaUserAlt } from "react-icons/fa";
+import { FaFacebookF, FaUserAlt } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 
 export default function Signin() {
@@ -72,10 +74,23 @@ export default function Signin() {
           </Button>
         </form>
         {/* Oauth */}
-        <div></div>
+        <span className="flex gap-2 items-center text-gray-400 text-nowrap my-8 before:inline-block before:w-full before:h-[1px] before:bg-gray-300 before:content-[''] after:inline-block after:w-full after:h-[1px] after:bg-gray-300 after:content-['']">
+          or Sign up with
+        </span>
+        <ul className="flex justify-center text-2xl gap-2">
+          <li className="w-[70px] border py-1 rounded">
+            <FcGoogle className="mx-auto" />
+          </li>
+          <li className="w-[70px] border py-1 rounded">
+            <FaFacebookF className="mx-auto" />
+          </li>
+          <li className="w-[70px] border py-1 rounded">
+            <FaXTwitter className="mx-auto" />
+          </li>
+        </ul>
 
-        <p className="text-center text-sm">
-          Already have an account? <Link to="/login">Sign in</Link>
+        <p className="text-center text-sm mt-8">
+          Already have an account? <Link to="/auth/login">Sign in</Link>
         </p>
       </div>
     </>
