@@ -82,10 +82,10 @@ export default function Signin() {
           </Button>
         </form>
 
-        <div className="flex gap-2 items-center text-gray-400 my-8">
-          <span className="inline-block w-full h-[1px] bg-gray-300"></span>
-          <span className="text-nowrap">or Sign up with</span>
-          <span className="inline-block w-full h-[1px] bg-gray-300"></span>
+        <div className="w-full flex gap-2 items-center text-gray-400 my-8">
+          <span className="w-full inline-block h-[1px] bg-gray-300"></span>
+          <span className="min-w-fit text-nowrap">or Sign up with</span>
+          <span className="w-full inline-block h-[1px] bg-gray-300"></span>
         </div>
 
         {/* Oauth */}
