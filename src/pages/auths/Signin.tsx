@@ -81,10 +81,14 @@ export default function Signin() {
             SIGN UP
           </Button>
         </form>
+
+        <div className="flex gap-2 items-center text-gray-400 my-8">
+          <span className="inline-block w-full h-[1px] bg-gray-300"></span>
+          <span className="text-nowrap">or Sign up with</span>
+          <span className="inline-block w-full h-[1px] bg-gray-300"></span>
+        </div>
+
         {/* Oauth */}
-        <span className="flex gap-2 items-center text-gray-400 text-nowrap my-8 before:inline-block before:w-full before:h-[1px] before:bg-gray-300 before:content-[''] after:inline-block after:w-full after:h-[1px] after:bg-gray-300 after:content-['']">
-          or Sign up with
-        </span>
         <ul className="flex justify-center text-2xl gap-2">
           <li className="w-[70px] border py-1 rounded">
             <FcGoogle className="mx-auto" />
