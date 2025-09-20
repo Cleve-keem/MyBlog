@@ -6,6 +6,8 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 
+import axios from "axios";
+
 export default function Signin() {
   const [formData, setFormData] = useState<Record<string, string>>({
     firstname: "",
@@ -19,9 +21,15 @@ export default function Signin() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    console.log("submitting", formData);
+
+    const response = await axios.post(
+      "http://localhost:3000/auth/sign-up",
+      formData
+    );
+
+    console.log(response);
   }
 
   return (
