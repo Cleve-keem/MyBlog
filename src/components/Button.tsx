@@ -2,9 +2,15 @@ interface ButtonProps {
   children: React.ReactNode;
   className?: string;
   variant?: string;
+  disabled?: boolean;
 }
 
-export default function Button({ children, className, variant }: ButtonProps) {
+export default function Button({
+  children,
+  className,
+  variant,
+  disabled,
+}: ButtonProps) {
   const base: string = "rounded-[5px]";
 
   const variants: Record<string, string> = {
@@ -15,7 +21,10 @@ export default function Button({ children, className, variant }: ButtonProps) {
   };
 
   return (
-    <button className={`${className} ${variant ? variants[variant] : base}`}>
+    <button
+      className={`${className} ${variant ? variants[variant] : base}`}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

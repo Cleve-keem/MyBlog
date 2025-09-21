@@ -5,11 +5,13 @@ import { FaFacebookF, FaUserAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
-
-import axios from "axios";
+import { registerUser, type RegisterResponse } from "../../services/authApi";
+import toast from "react-hot-toast";
+import type { RegisterCredentials } from "@/interfaces/requests/Register";
 
 export default function Signin() {
-  const [formData, setFormData] = useState<Record<string, string>>({
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [formData, setFormData] = useState<RegisterCredentials>({
     firstname: "",
     lastname: "",
     email: "",
@@ -23,13 +25,21 @@ export default function Signin() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    try {
+      setIsLoading(true);
+      const res: RegisterResponse = await registerUser(formData);
 
-    const response = await axios.post(
-      "http://localhost:3000/auth/sign-up",
-      formData
-    );
+      if (res.status === "failure") {
+        toast.error(res.message || "Registration failed");
+        return;
+      }
 
-    console.log(response);
+      toast.success(res.message || "Registered successfully");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -51,14 +61,14 @@ export default function Signin() {
               label="First Name"
               type="text"
               name="firstname"
-              value={formData.name}
+              value={formData.firstname}
               onChange={handleChange}
             />
             <FormField
               label="Last Name"
               type="text"
               name="lastname"
-              value={formData.name}
+              value={formData.lastname}
               onChange={handleChange}
             />
           </div>
@@ -66,18 +76,23 @@ export default function Signin() {
             label="Email"
             type="email"
             name="email"
-            value={formData.name}
+            value={formData.email}
             onChange={handleChange}
           />
           <FormField
             label="Password"
             type="password"
             name="password"
-            value={formData.name}
+            value={formData.password}
             onChange={handleChange}
           />
 
-          <Button className="w-full text-white font-normal text-sm bg-gray-900 my-4 h-[40px]">
+          <Button
+            disabled={isLoading}
+            className={`w-full text-white font-normal text-sm ${
+              isLoading ? "bg-gray-500" : "bg-gray-900"
+            } my-4 h-[40px]`}
+          >
             SIGN UP
           </Button>
         </form>
