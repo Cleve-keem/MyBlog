@@ -1,10 +1,6 @@
 import type { RegisterCredentials } from "@/interfaces/requests/Register";
+import type { RegisterResponse } from "@/interfaces/responses/RegisterResponse";
 import axios from "axios";
-
-export interface RegisterResponse {
-  error?: string;
-  message?: string;
-}
 
 const API_URL =
   import.meta.env.VITE_DATABASE_URL || "http://localhost:3000/api";
