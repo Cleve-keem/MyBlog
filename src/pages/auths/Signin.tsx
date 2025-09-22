@@ -5,9 +5,10 @@ import { FaFacebookF, FaUserAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
-import { registerUser, type RegisterResponse } from "../../services/authApi";
+import { registerUser } from "../../services/authApi";
 import toast from "react-hot-toast";
 import type { RegisterCredentials } from "@/interfaces/requests/Register";
+import type { RegisterResponse } from "@/interfaces/responses/RegisterResponse";
 
 export default function Signin() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -28,6 +29,7 @@ export default function Signin() {
     try {
       setIsLoading(true);
       const res: RegisterResponse = await registerUser(formData);
+      console.log(res);
 
       if (res.status === "failure") {
         toast.error(res.message || "Registration failed");

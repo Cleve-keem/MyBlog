@@ -1,5 +1,5 @@
 export interface RegisterResponse {
-  id: string;
+  id?: string;
   status: "success" | "failure";
   message: string;
 }
