@@ -6,14 +6,13 @@ export interface RegisterResponse {
   message?: string;
 }
 
+const API_URL = import.meta.env.VITE_DATABASE_URL || "http://localhost:3000/api";
+
 export async function registerUser(
   credentials: RegisterCredentials
 ): Promise<RegisterResponse> {
   try {
-    const response = await axios.post(
-      "http://localhost:3000/auth/sign-up",
-      credentials
-    );
+    const response = await axios.post(`${API_URL}/auth/register`, credentials);
 
     if (response.status !== 200) {
       throw new Error("Failed to register user");
