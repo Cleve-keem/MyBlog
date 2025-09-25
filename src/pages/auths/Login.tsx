@@ -1,24 +1,42 @@
 import { Link } from "react-router";
 import Button from "../../components/Button";
 import FormField from "../../components/Form/FormField";
-import { FaLock } from "react-icons/fa";
+import { FaFacebookF, FaLock } from "react-icons/fa";
 import { useState } from "react";
+import { loginUser } from "@/services/authApi";
+import type { LoginCredentials } from "@/interfaces/requests/Register";
+import type { LoginResponse } from "@/interfaces/responses/RegisterResponse";
+import toast from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Login() {
-  const [formData, setFormData] = useState<Record<string, string>>({
+  const [formData, setFormData] = useState<LoginCredentials>({
     email: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(e: any) {
-    e.preventDefualt();
-
-    console.log(e);
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    try {
+      const res: LoginResponse = await loginUser(formData);
+      if (res.status === "failure") {
+        toast.error(res.message || "Registration failed");
+        return;
+      }
+      toast.success(res.message || "Registered successfully");
+    } catch (err) {
+      console.error(err);
+      toast.error("Network error");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -38,25 +56,41 @@ export default function Login() {
             label="Email"
             type="email"
             name="email"
-            value={formData.name}
+            value={formData.email}
             onChange={handleChange}
           />
           <FormField
             label="Password"
             type="password"
             name="password"
-            value={formData.name}
+            value={formData.password}
             onChange={handleChange}
           />
 
-          <Button className="w-full h-[40px] text-white text-sm font-normal bg-gray-900 my-4">
+          <Button
+            disabled={isLoading}
+            className={`w-full text-white font-normal text-sm ${
+              isLoading ? "bg-gray-500" : "bg-gray-900"
+            } my-4 h-[40px]`}
+          >
             SIGN IN
           </Button>
         </form>
-        {/* Oauth */}
-        <div></div>
 
-        <p className="text-center text-sm">
+        {/* Oauth */}
+        <ul className="flex justify-center text-2xl gap-2 mt-8">
+          <li className="w-[70px] border py-1 rounded">
+            <FcGoogle className="mx-auto" />
+          </li>
+          <li className="w-[70px] border py-1 rounded">
+            <FaFacebookF className="mx-auto" />
+          </li>
+          <li className="w-[70px] border py-1 rounded">
+            <FaXTwitter className="mx-auto" />
+          </li>
+        </ul>
+
+        <p className="text-center text-sm mt-8">
           Don't have an account? <Link to="/auth/sign-up">Sign up</Link>
         </p>
       </div>

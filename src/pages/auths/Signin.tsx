@@ -26,19 +26,31 @@ export default function Signin() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    // try {
+    //   setIsLoading(true);
+    //   const res: RegisterResponse = await registerUser(formData);
+    //   console.log(res);
+
+    //   if (res.status === "failure") {
+    //     toast.error(res.message || "Registration failed");
+    //     return;
+    //   }
+
+    //   toast.success(res.message || "Registered successfully");
+    // } catch (error) {
+    //   console.log(error);
+    // }
     try {
       setIsLoading(true);
       const res: RegisterResponse = await registerUser(formData);
-      console.log(res);
-
       if (res.status === "failure") {
         toast.error(res.message || "Registration failed");
         return;
       }
-
       toast.success(res.message || "Registered successfully");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.error(err);
+      toast.error("Network error");
     } finally {
       setIsLoading(false);
     }

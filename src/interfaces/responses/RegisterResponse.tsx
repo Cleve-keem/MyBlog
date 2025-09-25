@@ -3,3 +3,9 @@ export interface RegisterResponse {
   status: "success" | "failure";
   message?: string;
 }
+
+export interface LoginResponse {
+  status: "success" | "failure";
+  message?: string;
+  user?: Record<string, string>;
+}
