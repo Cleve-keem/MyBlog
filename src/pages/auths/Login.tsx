@@ -11,11 +11,11 @@ import { FcGoogle } from "react-icons/fc";
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function Login() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState<LoginCredentials>({
     email: "",
     password: "",
   });
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
@@ -25,7 +25,9 @@ export default function Login() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const res: LoginResponse = await loginUser(formData);
+      console.log(res);
       if (res.status === "failure") {
         toast.error(res.message || "Registration failed");
         return;
