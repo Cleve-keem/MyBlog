@@ -48,9 +48,9 @@ export default function Signin() {
         return;
       }
       toast.success(res.message || "Registered successfully");
-    } catch (err) {
-      console.error(err);
-      toast.error("Network error");
+    } catch (err: any) {
+      console.error(err?.message);
+      toast.error(err?.response?.data?.message);
     } finally {
       setIsLoading(false);
     }

@@ -32,12 +32,12 @@ export default function Login() {
         toast.error(res.message || "Login failed");
         return;
       }
-      
+
       navigate("/");
       toast.success(res.message || "Logged in successfully");
     } catch (err: any) {
       console.error(err?.response?.data);
-      toast.error(err?.response?.data?.message);
+      toast.error(err?.response?.data?.message || "Invalid email or password");
     } finally {
       setIsLoading(false);
     }
