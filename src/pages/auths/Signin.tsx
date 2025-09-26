@@ -50,7 +50,7 @@ export default function Signin() {
       toast.success(res.message || "Registered successfully");
     } catch (err: any) {
       console.error(err?.message);
-      toast.error(err?.response?.data?.message);
+      toast.error(err?.response?.data?.message || "Failed to register");
     } finally {
       setIsLoading(false);
     }
