@@ -1,8 +1,11 @@
+import { Link } from "react-router";
+
 interface ButtonProps {
   children: React.ReactNode;
   className?: string;
   variant?: string;
   disabled?: boolean;
+  to?: string;
 }
 
 export default function Button({
@@ -10,6 +13,7 @@ export default function Button({
   className,
   variant,
   disabled,
+  to,
 }: ButtonProps) {
   const base: string = "rounded-[5px]";
 
@@ -19,6 +23,17 @@ export default function Button({
     outline: base + " border",
     danger: base + " bg-red-500 text-white",
   };
+
+  if (to) {
+    return (
+      <Link
+        to={to}
+        className={`${className} ${variant ? variants[variant] : base}`}
+      >
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <button
