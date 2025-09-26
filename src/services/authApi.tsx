@@ -67,5 +67,6 @@ export async function loginUser(
   const response = await axios.post(`${API_URL}/auth/login`, credentials, {
     withCredentials: true,
   });
+  console.log(response.data);
   return response.data; // { status, message, user? }
 }

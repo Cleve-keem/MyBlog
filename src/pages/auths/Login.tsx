@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Button from "../../components/Button";
 import FormField from "../../components/Form/FormField";
 import { FaFacebookF, FaLock } from "react-icons/fa";
@@ -16,6 +16,7 @@ export default function Login() {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
@@ -27,15 +28,16 @@ export default function Login() {
     try {
       setIsLoading(true);
       const res: LoginResponse = await loginUser(formData);
-      console.log(res);
       if (res.status === "failure") {
-        toast.error(res.message || "Registration failed");
+        toast.error(res.message || "Login failed");
         return;
       }
-      toast.success(res.message || "Registered successfully");
-    } catch (err) {
-      console.error(err);
-      toast.error("Network error");
+      
+      navigate("/");
+      toast.success(res.message || "Logged in successfully");
+    } catch (err: any) {
+      console.error(err?.response?.data);
+      toast.error(err?.response?.data?.message);
     } finally {
       setIsLoading(false);
     }

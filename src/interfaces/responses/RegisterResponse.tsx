@@ -1,11 +1,11 @@
 export interface RegisterResponse {
   id?: string; // optional if backend sometimes omits
   status: "success" | "failure";
-  message?: string;
+  message: string;
 }
 
 export interface LoginResponse {
   status: "success" | "failure";
-  message?: string;
+  message: string;
   user?: Record<string, string>;
 }
