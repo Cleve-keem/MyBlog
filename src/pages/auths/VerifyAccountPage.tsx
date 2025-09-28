@@ -30,7 +30,7 @@ export default function VerifyAccountPage() {
   }, [id, navigate]);
   return (
     <div>
-      <p>verifying your account...</p>
+      <p>Pls hold on while we are verifying your account...</p>
     </div>
   );
 }
