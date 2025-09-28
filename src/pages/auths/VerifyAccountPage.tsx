@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router";
 
-export default async function VerifyAccountPage() {
+export default function VerifyAccountPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
@@ -19,6 +19,7 @@ export default async function VerifyAccountPage() {
           navigate("/auth/login");
         } else {
           toast.error(res.message ?? "Verification failed");
+          navigate("auth/account/verify");
         }
       } catch (error) {
         console.error(error);
@@ -29,11 +30,7 @@ export default async function VerifyAccountPage() {
   }, [id, navigate]);
   return (
     <div>
-      <p>
-        A verification link as been sent to your mail kindly visit the link to
-        verify your account
-      </p>
-      {/* <button>Send Mail</button> */}
+      <p>verifying your account...</p>
     </div>
   );
 }
