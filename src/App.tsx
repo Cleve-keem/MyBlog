@@ -8,6 +8,7 @@ import AuthLayout from "./layouts/AuthLayout";
 import Login from "./pages/auths/Login";
 import Signin from "./pages/auths/Signin";
 import { Toaster } from "react-hot-toast";
+import VerifyAccountPage from "./pages/VerifyAccountPage";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="blogs" element={<Blogs />} />
             <Route path="contact-us" element={<Contact />} />
+            <Route
+              path="account/verify/:token"
+              element={<VerifyAccountPage />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>
