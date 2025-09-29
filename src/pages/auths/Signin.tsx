@@ -34,6 +34,7 @@ export default function Signin() {
         return;
       }
       toast.success(res.message || "Registered successfully");
+      setFormData({ firstname: "", lastname: "", email: "", password: "" });
     } catch (err: any) {
       console.log(err.response?.data.response);
       toast.error(
