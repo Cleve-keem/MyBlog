@@ -8,7 +8,7 @@ import { useState } from "react";
 import { registerUser } from "../../services/authApi";
 import toast from "react-hot-toast";
 import type { RegisterCredentials } from "@/interfaces/requests/Register";
-import type { RegisterResponse } from "@/interfaces/responses/RegisterResponse";
+import type { RegisterUserResponse } from "@/interfaces/responses/RegisterResponse";
 
 export default function Signin() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -28,15 +28,17 @@ export default function Signin() {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const res: RegisterResponse = await registerUser(formData);
+      const res: RegisterUserResponse = await registerUser(formData);
       if (res.status === "failure") {
         toast.error(res.message || "Registration failed");
         return;
       }
       toast.success(res.message || "Registered successfully");
     } catch (err: any) {
-      console.error(err?.message);
-      toast.error(err?.response?.data?.message || "Failed to register");
+      console.log(err.response?.data.response);
+      toast.error(
+        err?.response?.data.response?.message || "Failed to register"
+      );
     } finally {
       setIsLoading(false);
     }
