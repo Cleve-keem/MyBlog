@@ -16,13 +16,13 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="auth" element={<AuthLayout />}>
+          <Route path="account" element={<AuthLayout />}>
             {/* <Route index element={<Navigate replace to="login" />} /> */}
             <Route path="login" element={<Login />} />
             <Route path="sign-up" element={<Signin />} />
-            <Route path="account/verify" element={<VerifyPending />} />
+            <Route path="verify" element={<VerifyPending />} />
             <Route
-              path="account/verify/:token"
+              path="verify/:token"
               element={<VerifyAccountPage />}
             />
           </Route>
