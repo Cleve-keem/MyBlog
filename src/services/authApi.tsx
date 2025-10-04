@@ -14,7 +14,7 @@ const API_URL =
 export async function registerUser(
   credentials: RegisterCredentials
 ): Promise<RegisterUserResponse> {
-  const response = await axios.post(`${API_URL}/auth/sign-up`, credentials);
+  const response = await axios.post(`${API_URL}/account/sign-up`, credentials);
 
   console.log(response.data);
   localStorage.setItem("authToken", response.data.token);
@@ -30,7 +30,7 @@ export async function verifyUser(token: string): Promise<RegisterUserResponse> {
 export async function loginUser(
   credentials: LoginCredentials
 ): Promise<LoginResponse> {
-  const response = await axios.post(`${API_URL}/auth/login`, credentials);
+  const response = await axios.post(`${API_URL}/account/login`, credentials);
   console.log(response.data);
   return response.data; // { status, message, user? }
 }
