@@ -8,8 +8,7 @@ import type {
 } from "@/interfaces/responses/RegisterResponse";
 import axios from "axios";
 
-const API_URL =
-  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
+const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000/api";
 
 export async function registerUser(
   credentials: RegisterCredentials
