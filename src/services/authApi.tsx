@@ -9,7 +9,7 @@ import type {
 import axios from "axios";
 
 const API_URL =
-  import.meta.env.VITE_DATABASE_URL || "http://localhost:3000/api";
+  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
 
 export async function registerUser(
   credentials: RegisterCredentials
