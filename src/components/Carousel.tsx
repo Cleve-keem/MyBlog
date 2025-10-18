@@ -1,55 +1,90 @@
-import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-const images = [
-  "https://picsum.photos/800/400?random=1",
-  "https://picsum.photos/800/400?random=2",
-  "https://picsum.photos/800/400?random=3",
-  "https://picsum.photos/800/400?random=4",
+type Slide = {
+  image: string;
+  title: string;
+  subtitle?: string;
+  cta?: string;
+};
+
+const slides: Slide[] = [
+  {
+    image: "https://picsum.photos/1200/600?random=1",
+    title: "Welcome to Our Blog",
+    subtitle: "Latest articles, tutorials and news — curated for you.",
+    cta: "Read Latest",
+  },
+  {
+    image: "https://picsum.photos/1200/600?random=2",
+    title: "Design & UX",
+    subtitle: "Inspiration and best practices for beautiful interfaces.",
+    cta: "Explore Design",
+  },
+  {
+    image: "https://picsum.photos/1200/600?random=3",
+    title: "Development Tips",
+    subtitle: "Practical guides and performance tricks for devs.",
+    cta: "Learn More",
+  },
+  {
+    image: "https://picsum.photos/1200/600?random=4",
+    title: "Case Studies",
+    subtitle: "Real projects, outcomes and lessons learned.",
+    cta: "See Cases",
+  },
 ];
 
-export default function Carousel() {
-  const [current, setCurrent] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Auto slide
-  useEffect(() => {
-    startAutoSlide();
-    return () => stopAutoSlide(); // cleanup
-  }, []);
-
-  const startAutoSlide = () => {
-    stopAutoSlide(); // prevent duplicates
-    intervalRef.current = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 3000);
-  };
-
-  const stopAutoSlide = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-  };
-
+const Carousel: React.FC = () => {
   return (
-    <div className="overflow-hidden w-[800px] mx-auto relative">
-      <motion.div
-        className="flex"
-        drag="x"
-        dragConstraints={{ left: -((images.length - 1) * 800), right: 0 }}
-        animate={{ x: -current * 800 }}
-        transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        onDragStart={stopAutoSlide}
-        onDragEnd={startAutoSlide}
-      >
-        {images.map((src, i) => (
-          <motion.img
-            key={i}
-            src={src}
-            className="w-[800px] h-[400px] object-cover"
-          />
-        ))}
-      </motion.div>
-
-      {/* Dots */}
-    </div>
+    <Swiper
+      modules={[Autoplay, Pagination, Navigation]}
+      spaceBetween={20}
+      slidesPerView={1}
+      loop={true}
+      pagination={{ clickable: true }}
+      autoplay={{ delay: 3000, disableOnInteraction: false }}
+      className="w-full"
+    >
+      {slides.map((slides, idx) => (
+        <SwiperSlide key={idx}>
+          <div className="relative w-full h-[350px] md:h-[500px]">
+            <img
+              src={slides.image}
+              alt={`slide-${idx}`}
+              className="w-full h-full object-cover"
+              draggable={false}
+            />
+            {/* overlay banner */}
+            <div className="absolute inset-0 flex items-end">
+              <div className="p-6 md:p-10 max-w-xl bg-gradient-to-t from-black/70 to-transparent text-white">
+                <h2 className="text-2xl md:text-4xl font-bold leading-tight">
+                  {slides.title}
+                </h2>
+                {slides.subtitle && (
+                  <p className="mt-2 text-sm md:text-base">{slides.subtitle}</p>
+                )}
+                {slides.cta && (
+                  <button
+                    className="mt-4 inline-block bg-white text-black px-4 py-2 rounded-md text-sm md:text-base"
+                    onClick={() => {
+                      /* replace with navigation handler if needed */
+                    }}
+                  >
+                    {slides.cta}
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
-}
+};
+
+export default Carousel;

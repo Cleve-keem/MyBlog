@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Button from "../../components/Button";
 import FormField from "../../components/Form/FormField";
 import { FaFacebookF, FaUserAlt } from "react-icons/fa";
@@ -18,6 +18,7 @@ export default function Signin() {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
@@ -35,8 +36,9 @@ export default function Signin() {
       }
       toast.success(res.message || "Registered successfully");
       setFormData({ firstname: "", lastname: "", email: "", password: "" });
+      navigate("/account/login");
     } catch (err: any) {
-      console.log(err.response?.data.response);
+      console.log(err.response?.data.response)
       toast.error(
         err?.response?.data.response?.message || "Failed to register"
       );
@@ -120,7 +122,7 @@ export default function Signin() {
         </ul>
 
         <p className="text-center text-sm mt-8">
-          Already have an account? <Link to="/auth/login">Sign in</Link>
+          Already have an account? <Link to="/account/login">Sign in</Link>
         </p>
       </div>
     </>
