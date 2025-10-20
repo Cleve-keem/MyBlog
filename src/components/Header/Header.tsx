@@ -13,28 +13,60 @@ export default function Header() {
   const toggleMobile = () => setIsOpen((prev) => !prev);
 
   return (
-    <motion.header className="h-[65px] fixed left-0 right-0 top-0 md:top-1.5 px-6 flex justify-between sm:px-2 lg:w-[90%] mx-auto rounded hover:bg-white/60 hover:backdrop-blur-md hover:shadow-md hover:scale-[1.01] z-40 bg-white">
-      {/* Left */}
-      <div className="flex items-center gap-5">
-        <Hamburger close={toggleMobile} variant="open" />
-        <Logo />
-        <Sidebar variant="desktop" close={toggleMobile} />
-      </div>
+    <motion.header className="w-full z-40 flex items-center">
+      <div className="w-full flex items-center justify-between">
+        <div className="container w-full h-full xs:max-w-[576px] xs:mx-auto md:min-w-[100%] md:mx-0 lg:max-w-[1248px] lg:px-4 lg:mx-auto">
+          {/* DESKTOP HEADER */}
+          <div className="hidden w-full min-h-[64px] my-[8px] px-[16px] flex-1 lg:rounded-[8px] xslg:flex xslg:px-0">
+            {/* Left */}
+            <div className="h-[64px] pr-[8px] flex items-center">
+              <Logo />
+            </div>
+            <Sidebar variant="desktop" close={toggleMobile} />
 
-      {/* Right */}
-      <div className="flex items-center gap-4">
-        <CiSearch className="text-2xl" />
-        <div className="hidden sm:block">
-          <AuthButton />
+            {/* Right */}
+            <div className="pl-[8px] flex flex-1 items-center justify-end">
+              <div className="h-full flex items-center">
+                <CiSearch className="text-2xl" />
+              </div>
+              <div className="h-full ml-[8px] sm:block">
+                <AuthButton />
+              </div>
+            </div>
+          </div>
+
+          {/* MOBILE HEADER */}
+          <div className="w-full min-h-[64px] my-[8px] px-[16px] flex flex-1 lg:rounded-[8px] xslg:px-0 xslg:hidden">
+            {/* Left */}
+            <div className="pr-[8px] flex flex-1 items-center">
+              <Hamburger close={toggleMobile} variant="open" />
+            </div>
+            <div className="pr-[8px] flex flex-6 items-center justify-center">
+              <Logo />
+            </div>
+            {/* Right */}
+            <div className="pl-[8px] flex flex-1 items-center justify-end">
+              <div className="h-full flex items-center justify-end md:justify-start">
+                <CiSearch className="text-2xl" />
+              </div>
+              <div className="h-full ml-[8px] hidden md:flex">
+                <AuthButton />
+              </div>
+            </div>
+
+            {/* SIDE BAR */}
+            <AnimatePresence>
+              {isOpen && (
+                <Sidebar
+                  variant="mobile"
+                  isOpen={isOpen}
+                  close={toggleMobile}
+                />
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
-
-      {/* Mobile Navbar */}
-      <AnimatePresence>
-        {isOpen && (
-          <Sidebar variant="mobile" isOpen={isOpen} close={toggleMobile} />
-        )}
-      </AnimatePresence>
     </motion.header>
   );
 }

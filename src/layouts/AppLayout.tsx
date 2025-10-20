@@ -5,7 +5,7 @@ export default function AppLayout() {
   return (
     <>
       <Header />
-      <main className="mt-19 lg:w-[90%] mx-auto">
+      <main className="lg:w-full mx-auto border border-red-500">
         <Outlet />
       </main>
     </>

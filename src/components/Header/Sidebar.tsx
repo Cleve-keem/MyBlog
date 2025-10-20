@@ -22,58 +22,60 @@ export default function Sidebar({ variant, isOpen, close }: SidebarProps) {
 
   if (variant === "desktop") {
     return (
-      <aside>
+      <aside className="flex flex-1 items-center justify-start max-w-full px-[8px] border border-purple-500">
         {/* Desktop Nav */}
         {variant === "desktop" && (
-          <ul className="hidden lg:flex gap-6">
-            {navItems.map((item, index) => (
-              <li
-                key={index}
-                className="relative"
-                onMouseEnter={() => handleHover(index)}
-                onMouseLeave={() => handleHover(null)}
-              >
-                <button className="flex items-center gap-1 font-medium">
-                  {item.label}
-                  {item.menu && (
-                    <span>
-                      {activeMenu !== index ? (
-                        <MdKeyboardArrowDown />
-                      ) : (
-                        <IoArrowDownOutline />
-                      )}
-                    </span>
-                  )}
-                </button>
+          <nav className="block">
+            <ul className="lg:flex items-center gap-6">
+              {navItems.map((item, index) => (
+                <li
+                  key={index}
+                  className="relative"
+                  onMouseEnter={() => handleHover(index)}
+                  onMouseLeave={() => handleHover(null)}
+                >
+                  <button className="flex items-center gap-1 font-medium">
+                    {item.label}
+                    {item.menu && (
+                      <span>
+                        {activeMenu !== index ? (
+                          <MdKeyboardArrowDown />
+                        ) : (
+                          <IoArrowDownOutline />
+                        )}
+                      </span>
+                    )}
+                  </button>
 
-                {/* Dropdown */}
-                <AnimatePresence>
-                  {activeMenu === index && (
-                    <motion.ul
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="absolute left-0 top-7 mt-2 w-40 rounded-lg bg-white shadow-md p-2"
-                    >
-                      {/* Pointer */}
-                      <div className="absolute -top-1 left-10 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white"></div>
+                  {/* Dropdown */}
+                  <AnimatePresence>
+                    {activeMenu === index && (
+                      <motion.ul
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute left-0 top-7 mt-2 w-40 rounded-lg bg-white shadow-md p-2"
+                      >
+                        {/* Pointer */}
+                        <div className="absolute -top-1 left-10 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white"></div>
 
-                      {item.menu.map((link, i) => (
-                        <li key={i}>
-                          <Link
-                            to={link.to}
-                            className="block px-3 py-2 hover:bg-gray-100 rounded-md"
-                          >
-                            {link.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </motion.ul>
-                  )}
-                </AnimatePresence>
-              </li>
-            ))}
-          </ul>
+                        {item.menu.map((link, i) => (
+                          <li key={i}>
+                            <Link
+                              to={link.to}
+                              className="block px-3 py-2 hover:bg-gray-100 rounded-md"
+                            >
+                              {link.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </li>
+              ))}
+            </ul>
+          </nav>
         )}
       </aside>
     );
@@ -81,7 +83,7 @@ export default function Sidebar({ variant, isOpen, close }: SidebarProps) {
 
   return (
     <>
-      {/* Mobile Nav (Drawer style) */}
+      {/* Mobile Nav */}
       {variant === "mobile" && isOpen && (
         <motion.ul
           initial={{ x: "-100%" }}

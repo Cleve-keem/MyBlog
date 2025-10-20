@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <p>All My Posts</p>
     </>
   );
 }
