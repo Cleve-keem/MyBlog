@@ -22,7 +22,7 @@ export default function Sidebar({ variant, isOpen, close }: SidebarProps) {
 
   if (variant === "desktop") {
     return (
-      <aside className="flex flex-1 items-center justify-start max-w-full px-[8px] border border-purple-500">
+      <aside className="flex flex-1 items-center justify-start max-w-full px-[8px]">
         {/* Desktop Nav */}
         {variant === "desktop" && (
           <nav className="block">

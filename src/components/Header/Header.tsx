@@ -15,7 +15,7 @@ export default function Header() {
   return (
     <motion.header className="w-full z-40 flex items-center">
       <div className="w-full flex items-center justify-between">
-        <div className="container w-full h-full xs:max-w-[576px] xs:mx-auto md:min-w-[100%] md:mx-0 lg:max-w-[1248px] lg:px-4 lg:mx-auto">
+        <div className="container w-full h-full max-w-[576px] xs:max-w-[576px] xs:mx-auto md:max-w-[992px] md:mx-0 section-xlg:max-w-[1248px] lg:px-4 lg:mx-auto">
           {/* DESKTOP HEADER */}
           <div className="hidden w-full min-h-[64px] my-[8px] px-[16px] flex-1 lg:rounded-[8px] xslg:flex xslg:px-0">
             {/* Left */}
